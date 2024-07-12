@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ActionReducer, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,7 +11,6 @@ import { environment } from './shared/environments/environment';
 
 
 import { AppComponent } from './app.component';
-import { productReducer } from './store/reducers/product.reducer';
 import { reducers, metaReducers } from './store/reducers';
 import { ProductEffects } from './store/effects/product.effects';
 import { ProductListComponent } from './components/product-list/product-list.component';

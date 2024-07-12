@@ -11,7 +11,7 @@ import { tap } from 'rxjs/operators';
     providedIn: 'root'
 })
 export class ProductService {
-    private baseUrl = 'https://dummyjson.com/products';
+    private baseUrl = 'https://dummyjson.com/products'; //Stay here since it's a static App.
     private cacheKey = 'productsCache';
     private cacheTTL = 15 * 60 * 1000; // 15 minutes
 
@@ -35,10 +35,6 @@ export class ProductService {
 
       getCategories(): Observable<{category: String[] }> {
         return this.http.get<{category:String[] }>(`${this.baseUrl}/category-list`);
-      }
-
-      getBrands(): Observable<{category:String[] }> {
-        return this.http.get<{category:String[] }>(`${this.baseUrl}/categories-list`);
       }
 
       searchProducts(keyword: string): Observable<{ products: Product[] }> {

@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  // products$: Observable<Product[]>;
   allProducts: Product[] = [];
   displayedProducts$: Observable<Product[]>;
   currentPage: number = 1;
@@ -21,7 +20,7 @@ export class ProductListComponent implements OnInit {
   isLoading: boolean = false;
   isLoading$: Observable<boolean>;
 
-  constructor(private store: Store<{ productState: ProductState }> ,private router: Router) {
+  constructor(private store: Store<{ productState: ProductState }>, private router: Router) {
     this.displayedProducts$ = store.pipe(select(state => state.productState.displayedProducts));
     this.isLoading$ = store.pipe(select('productState', 'isLoading'));
 
@@ -49,10 +48,10 @@ export class ProductListComponent implements OnInit {
   }
 
   navigateTo(id: number): void {
-    this.router.navigate(['/product/' + id]); // Navigate to the specified route
+    this.router.navigate(['/product/' + id]);
   }
 
-  numRound(value: any){
+  numRound(value: any) {
     return Math.round(value).toFixed(1)
   }
 }

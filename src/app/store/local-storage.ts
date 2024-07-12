@@ -8,12 +8,3 @@ export function localStorageSyncReducer<T>(reducer: ActionReducer<T>): ActionRed
   };
 }
 
-export function rehydrateState(reducer: ActionReducer<any>): ActionReducer<any> {
-  return (state: any, action: Action) => {
-    const rehydratedState = localStorage.getItem('productState');
-    if (rehydratedState) {
-      state = JSON.parse(rehydratedState);
-    }
-    return reducer(state, action);
-  };
-}
