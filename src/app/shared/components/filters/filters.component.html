@@ -1,0 +1,41 @@
+<div class="card custom-sideNav mt-3">
+  <div class="card-body">
+    <!-- Filters -->
+    <div class="list-group list-group-flush">
+      <strong>Category</strong>
+      <button *ngFor="let category of categories" class="filter-item" (click)="onFilterChange({ category: category })"
+        type="button" class="list-group-item list-group-item-action" [class.active]=" category === activeCategory">
+        {{ category }}
+      </button>
+    </div>
+    
+  </div>
+</div>
+<div class="card custom-sideNav mt-3">
+  <div class="card-body">
+    <div class="form-group">
+      <div class="row mb-3">
+        <strong>Price Range (EGP)</strong><br>
+      </div>
+      <div class="row price-range">
+        <div class="range">
+          <div class="input-group mb-3">
+            <b>From</b>
+            <input type="number" class="form-control" placeholder="100" aria-label="100" [(ngModel)]="minPrice"
+              (change)="onFilterChange({ minPrice: minPrice })">
+          </div>
+        </div>
+        <div class="range">
+          <div class="input-group mb-3">
+            <b>TO</b>
+            <input type="number" class="form-control" placeholder="1000" aria-label="1000" [(ngModel)]="maxPrice"
+              (change)="onFilterChange({ maxPrice: maxPrice })">
+          </div>
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+  </div>
+

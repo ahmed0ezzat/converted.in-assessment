@@ -1,0 +1,21 @@
+.custom-sideNav {
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 0px;
+
+    .list-group-item  {
+        border: none;
+    }
+.price-range {
+padding-left: 15px;
+    .range {
+        width: 50%;
+        padding: 0;
+        margin: 0;
+        b {
+            padding: 5px 3px;
+        }
+    }
+}
+}

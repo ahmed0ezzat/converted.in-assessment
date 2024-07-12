@@ -1,0 +1,54 @@
+<div *ngIf="product$ | async as product" class="container">
+  <div class="row align-items-center mb-4">
+    <div class="col-md-4">
+      <img [src]="product.thumbnail" alt="{{ product.title }}" class="img-fluid rounded">
+    </div>
+    <div class="col-md-8">
+      <div class="product-info">
+        <h3 class="h5">{{ product.title }}</h3>
+        <p class="text-muted">{{ product.description }}</p>
+        <p class="font-weight-bold">EGP {{ product.price }}</p>
+        <div class="form-group">
+          <label for="quantitySelect">Quantity:</label>
+          <select 
+            id="quantitySelect" 
+            class="form-control" 
+            [(ngModel)]="selectedQuantity"
+            [ngModelOptions]="{standalone: true}"
+            style="max-width: 50px;display: inline-block;margin:5px"
+            >
+            <option *ngFor="let qty of getQuantityArray(product.stock || 0)" [value]="qty">{{ qty }}</option>
+          </select>
+          <button (click)="addToCart(product)" class="btn btn-primary">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row align-items-center mb-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Overview</h5>
+          <p class="card-text">{{ product.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row align-items-center mb-4" *ngIf="product.reviews && product.reviews.length">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Reviews</h5>
+          <div *ngFor="let review of product.reviews; let last = last">
+            <p class="card-text"><strong>{{ review.reviewerName }}</strong> <small class="text-muted">({{ review.reviewerEmail }})</small></p>
+            <p class="card-text">{{ review.comment }}</p>
+            <p class="card-text"><small class="text-muted">{{ review.date | date:'medium' }}</small></p>
+            <p class="card-text">Rating: <span *ngFor="let item of getQuantityArray(review.rating)">⭐️</span></p>
+            <hr *ngIf="!last">
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

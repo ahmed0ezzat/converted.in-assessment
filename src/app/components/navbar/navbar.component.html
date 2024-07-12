@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg custom-nav">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="d-flex justify-content-between w-100">
+        <form class="flex-grow-1 mx-3">
+          <input class="form-control" type="search" placeholder="Search for products..." aria-label="Search" (input)="onSearch($event)">
+        </form>
+        <div class="dropdown" *ngIf="cartItems$ | async as cartItems">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="cartDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg>
+            Cart
+            <span *ngIf="cartItems.length" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{cartItems.length}}
+            </span>
+          </button>
+          <div class="cart-body">
+            <div class=" container dropdown-menu dropdown-menu-end p-2" aria-labelledby="cartDropdown" *ngIf="cartItems.length">
+              <div class="shopping-cart">
+                <div class="shopping-cart-header">
+                  <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{{cartItems.length}}</span>
+                  <div class="shopping-cart-total">
+                    <span class="lighter-text">Total:</span>
+                    <span class="main-color-text">EGP {{countTotal(cartItems)}}</span>
+                  </div>
+                </div> <!--end shopping-cart-header -->
+            
+                <ul class="shopping-cart-items">
+                  <li class="clearfix" *ngFor="let item of cartItems">
+                    <img src={{item.product.thumbnail}} alt="item1" />
+                    <span class="item-name">{{item.product.title}}</span>
+                    <span class="item-price">{{item.product.price}}</span>
+                    <span class="item-quantity">Quantity: {{item.quantity}}</span>
+                  </li>
+    
+                </ul>
+            
+                <a routerLink="/"  class="button">Checkout</a>
+              </div> <!--end shopping-cart -->
+            </div> <!--end container -->
+          </div>
+          <ul class="dropdown-menu dropdown-menu-end p-2" aria-labelledby="cartDropdown" *ngIf="!cartItems.length">
+            <li class="text-center">Your cart is empty.</li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</nav>
