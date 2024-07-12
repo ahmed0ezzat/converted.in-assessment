@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ProductState } from 'src/app/store/product.reducer';
-import * as ProductActions from '../../../store/product.actions';
+import { ProductState } from 'src/app/store/reducers/product.reducer';
+import * as ProductActions from '../../../store/actions/product.actions';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({

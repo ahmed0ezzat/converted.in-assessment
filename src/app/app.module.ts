@@ -11,9 +11,9 @@ import { environment } from './shared/environments/environment';
 
 
 import { AppComponent } from './app.component';
-import { productReducer } from './store/product.reducer';
+import { productReducer } from './store/reducers/product.reducer';
 import { reducers, metaReducers } from './store/reducers';
-import { ProductEffects } from './store/product.effects';
+import { ProductEffects } from './store/effects/product.effects';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { NavbarComponent } from './components/navbar/navbar.component';

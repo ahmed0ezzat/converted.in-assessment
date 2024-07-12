@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 import { Product } from '../../../models/product.model';
-import { ProductState } from '../../store/product.reducer';
-import * as ProductActions from '../../store/product.actions';
+import { ProductState } from '../../store/reducers/product.reducer';
+import * as ProductActions from '../../store/actions/product.actions';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',

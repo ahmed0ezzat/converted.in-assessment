@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { ProductState } from 'src/app/store/product.reducer';
-import { loadProducts } from '../../store/product.actions';
+import { ProductState } from 'src/app/store/reducers/product.reducer';
+import { loadProducts } from '../../store/actions/product.actions';
 import { Observable } from 'rxjs';
 import { Product } from 'src/models/product.model';
-import * as ProductActions from '../../store/product.actions';
+import * as ProductActions from '../../store/actions/product.actions';
 
 @Component({
   selector: 'app-navbar',
@@ -34,7 +34,7 @@ export class NavbarComponent {
 
   onSearch(event: any): void {
     let keyword = event.target.value;
-    if (keyword) {
+    if (keyword && keyword !== "" ) {
       this.store.dispatch(ProductActions.searchProducts({ keyword }));
     } else {
       this.store.dispatch(ProductActions.clearSearch());

@@ -5,7 +5,7 @@ import {
   import { localStorageSyncReducer } from '../local-storage';
   import { environment } from '../../shared/environments/environment';
 //   import * as fromCart from './cart.reducer';
-  import * as productReducer from '../product.reducer';
+  import * as productReducer from './product.reducer';
   
   export interface AppState {
     // cart: fromCart.CartState;
